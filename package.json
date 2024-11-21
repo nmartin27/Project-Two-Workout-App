@@ -1,0 +1,28 @@
+{
+  "name": "project-two-workout-app",
+  "version": "1.0.0",
+  "description": "Project-Two-Workout-App",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nmartin27/Project-Two-Workout-App.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nmartin27/Project-Two-Workout-App/issues"
+  },
+  "homepage": "https://github.com/nmartin27/Project-Two-Workout-App#readme",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.21.1",
+    "method-override": "^3.0.0",
+    "mongoose": "^8.8.2",
+    "morgan": "^1.10.0"
+  }
+}

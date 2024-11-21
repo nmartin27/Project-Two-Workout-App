@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit <%= workout.name %></title>
+</head>
+<body>
+    <h1>Edit <%= workout.name %></h1>
+    <form action="/workouts/<%= workout._id%>?_method=PUT" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" name="name" value="<%= workout.name %>"/>
+        <label for="isCompleted">Did you complete your workout?</label>
+        <input type="checkbox" name="isCompleted" <% if (workout.isCompleted) { %> checked <% } %>/>
+        <button type="submit">Update Exercise</button>
+    </form>
+</body>
+<a href="/workouts">Back to workouts</a>
+</html>

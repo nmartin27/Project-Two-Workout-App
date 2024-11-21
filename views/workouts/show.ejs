@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workout Page</title>
+</head>
+<body>
+    <h1><%=workout.name%></h1>
+    <% if (workout.isCompleted) { %>
+        <p>Well done on Completing!</p>
+    <% } else { %>
+        <p>GET IT DONE!</p>
+    <% } %>
+    <form action="/workouts/<%= workout._id %>?_method=DELETE" method="POST">
+    <button type="submit">Delete <%= workout.name %>?</button>
+</form>
+</body>
+<a href="/workouts">Back to workouts</a>
+<a href="/workouts/<%= workout._id %>/edit">Edit <%= workout.name %></a>
+</html>

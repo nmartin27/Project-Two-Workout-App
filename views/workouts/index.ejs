@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workout Index</title>
+</head>
+<body>
+    <h1>All your Workouts!</h1>
+    <ul>
+        <% workouts.forEach(workout => { %>
+          <li><a href="/workouts/<%=workout._id%>"><%= workout.name%></a> </li> 
+       <% }); %>
+    </ul>
+</body>
+<a href="/workouts/new">Add New Workout</a>
+</html>
