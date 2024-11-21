@@ -1,21 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+
     <title>Workout Page</title>
-</head>
-<body>
-    <h1><%=workout.name%></h1>
-    <% if (workout.isCompleted) { %>
+  </head>
+  <body>
+    <h1><%=workout.name%> : <%=workout.duration%> minutes completed!</h1>
+    <!-- <% if (workout.isCompleted) { %>
         <p>Well done on Completing!</p>
     <% } else { %>
         <p>GET IT DONE!</p>
-    <% } %>
+    <% } %> -->
+
+    <!-- Add an Exercise  -->
+    <form action="/workouts/:workoutId" method="POST">
+      <label for="name">Name:</label>
+      <input type="text" name="name" />
+      <label for="name">Sets x Reps:</label>
+      <input type="text" name="reps" placeholder="4 x 15" />
+      <!-- <label for="isCompleted">Did you complete your Exercise?</label>
+        <input type="checkbox" name="isCompleted"/> -->
+      <button type="submit">Add Exercise</button>
+    </form>
     <form action="/workouts/<%= workout._id %>?_method=DELETE" method="POST">
-    <button type="submit">Delete <%= workout.name %>?</button>
-</form>
-</body>
-<a href="/workouts">Back to workouts</a>
-<a href="/workouts/<%= workout._id %>/edit">Edit <%= workout.name %></a>
+      <button type="submit">Delete <%= workout.name%>?</button>
+    </form>
+  </body>
+  <a class="index-link" href="/workouts">
+    <div class="index-text">Back to Workouts</div></a>
+  <a href="/workouts/<%= workout._id %>/edit">
+    <div class="edit">Edit <%= workout.name %>?</div></a>
 </html>

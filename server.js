@@ -3,6 +3,7 @@ dotenv.config();
 const express = require('express');
 const mongoose = require('mongoose');
 const methodOverride = require("method-override"); 
+const path = require('path');
 
 const app = express();
 mongoose.connect(process.env.MONGODB_URI);
@@ -14,6 +15,7 @@ const Workout = require('./models/workout.js');
 
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride("_method")); 
+app.use(express.static(path.join(__dirname, "public")))
 
 //home page
 app.get('/', async (req, res)=> {
@@ -30,10 +32,22 @@ app.get('/workouts/new',  async (req, res)=>{
     res.render('workouts/new.ejs')
 })
 
+//show page
 app.get('/workouts/:workoutId', async (req, res)=>{
     const foundWorkout = await Workout.findById(req.params.workoutId)
-    res.render('workouts/show.ejs', {workout: foundWorkout})
+    // const foundExercise = foundWorkout.exercises.id(exerciseId)
+    await foundWorkout.save()
+    res.render('workouts/show.ejs', {
+        workout: foundWorkout,
+        // exercise: foundExercise,
+    })
 }) 
+
+//Add to sub-document exercises?
+// app.post('/workouts/:workoutId', async (req, res) =>{
+//     await Workout.create(req.body)
+//        res.redirect('/workouts/show.ejs')
+//     });
 
 app.post('/workouts', async (req, res) =>{
 if (req.body.isCompleted === 'on'){
@@ -69,7 +83,6 @@ app.put('/workouts/:workoutId', async (req, res)=>{
     await Workout.findByIdAndUpdate(req.params.workoutId, req.body)
     res.redirect(`/workouts/${req.params.workoutId}`)
 })
-
 
 
 

@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 
 const excerciseSchema = new mongoose.Schema ({
     name: String,
-    isCompleted: Boolean
+    isCompleted: Boolean,
+    reps: String,
 });
 
 const workoutSchema = new mongoose.Schema({

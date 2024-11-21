@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+
     <title>Edit <%= workout.name %></title>
 </head>
 <body>
@@ -14,6 +16,18 @@
         <input type="checkbox" name="isCompleted" <% if (workout.isCompleted) { %> checked <% } %>/>
         <button type="submit">Update Exercise</button>
     </form>
+    <form action="">
+    <label for="name" >Name:</label>
+    <input type="text" name="name"/>
+    <label for="name" >Day:</label>
+    <input type="text" name="date" placeholder="DD/MM/YYYY"/>
+    <label for="name" >Duration:</label>
+    <input type="number" name="duration" placeholder="(e.g., minutes, seconds)"/>
+    <label for="isCompleted">Did you complete your workout?</label>
+    <input type="checkbox" name="isCompleted"/>
+    <button type="submit">Add Workout</button>
+    </form>
 </body>
-<a href="/workouts">Back to workouts</a>
+<a class="index-link" href="/workouts">
+    <div class="index-text">Back to Workouts</div></a> 
 </html>
