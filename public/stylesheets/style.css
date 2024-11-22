@@ -103,11 +103,15 @@ form {
   margin: 20px 10px;
 }
 
+.is-completed{
+    padding: 10px;
+}
+
 .checkbox-div {
   flex-direction: row;
   /* align-self: center; */
-  transform: scale(0.5);
-  padding: 5px;
+  transform: scale(2.3);
+  margin: auto;
 }
 
 label,
