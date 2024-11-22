@@ -15,6 +15,8 @@ body {
 h1 {
   color: #769642;
   font-size: 80px;
+  margin: 10px 2px 0 2px;
+  display: inline;
 }
 
 a,
@@ -25,6 +27,17 @@ ul {
   font-family: "Nothing You Could Do", cursive, sans-serif;
   text-decoration-line: none;
 }
+
+.start-day {
+    display: inline;
+    /* align-self: baseline; */
+    /* align-items: first baseline; */
+    font-family: "DM Sans", cursive, sans-serif;
+    font-size: 1em;
+    text-decoration-line: none;
+    color: #769642;
+text-shadow: 3px 3px 1px #f47b5b; 
+ }
 
 footer {
   font-size: 0.7em;
@@ -76,6 +89,7 @@ footer {
     box-shadow: 0 2.5px #ffbd59
 } */
 
+
 form {
   font-family: "DM Sans", sans-serif;
   display: flex;
@@ -93,6 +107,7 @@ form {
   flex-direction: row;
   /* align-self: center; */
   transform: scale(0.5);
+  padding: 5px;
 }
 
 label,
@@ -100,6 +115,7 @@ input {
   margin: 10px 2px 0 2px;
   font-size: 1.3em;
   align-self: center;
+  padding: 5px;
 }
 
 button {

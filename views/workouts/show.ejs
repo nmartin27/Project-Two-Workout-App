@@ -8,16 +8,17 @@
     <title>Workout Page</title>
   </head>
   <body>
-    <h1><%=workout.name%> : <%=workout.duration%> minutes completed!</h1>
-    <!-- <% if (workout.isCompleted) { %>
-        <p>Well done on Completing!</p>
+    
+    <% if (workout.isCompleted) { %>
+        <h1> Good job on Completing <%=workout.name%>!</h1>
+        <h3> You completed in <%= workout.duration %> minutes!</h3>
     <% } else { %>
-        <p>GET IT DONE!</p>
-    <% } %> -->
+        <h1>GET IT DONE! Start <a class="start-day" href="/workouts/<%= workout._id %>/edit"><%= workout.name%>?</a></h1>
+    <% } %>
 
     <!-- Add an Exercise  -->
     <form action="/workouts/:workoutId" method="POST">
-      <label for="name">Name:</label>
+      <label for="name">Exercise Name:</label>
       <input type="text" name="name" />
       <label for="name">Sets x Reps:</label>
       <input type="text" name="reps" placeholder="4 x 15" />

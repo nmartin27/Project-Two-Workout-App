@@ -12,20 +12,21 @@
     <form action="/workouts/<%= workout._id%>?_method=PUT" method="POST">
         <label for="name">Name:</label>
         <input type="text" name="name" value="<%= workout.name %>"/>
-        <label for="isCompleted">Did you complete your workout?</label>
+        <label for="name" >Duration:</label>
+    <input type="number" name="duration" placeholder="<%=workout.duration%>"/>
+       <label for="isCompleted">Did you complete your workout?</label>
         <input type="checkbox" name="isCompleted" <% if (workout.isCompleted) { %> checked <% } %>/>
-        <button type="submit">Update Exercise</button>
+        <button type="submit">Update Workout</button>
     </form>
     <form action="">
-    <label for="name" >Name:</label>
+    <label for="name" >Exercise Name:</label>
     <input type="text" name="name"/>
-    <label for="name" >Day:</label>
-    <input type="text" name="date" placeholder="DD/MM/YYYY"/>
-    <label for="name" >Duration:</label>
-    <input type="number" name="duration" placeholder="(e.g., minutes, seconds)"/>
-    <label for="isCompleted">Did you complete your workout?</label>
-    <input type="checkbox" name="isCompleted"/>
-    <button type="submit">Add Workout</button>
+    <!-- <label for="name" >Day:</label>
+    <input type="text" name="date" placeholder="DD/MM/YYYY"/> -->
+      <label for="name">Sets x Reps:</label>
+      <input type="text" name="reps" placeholder="4 x 15" />
+    
+    <button type="submit">Add Exercise</button>
     </form>
 </body>
 <a class="index-link" href="/workouts">
