@@ -86,6 +86,34 @@ const exerciseData = {
 res.redirect(`/workouts/${workoutId}`);
     });
 
+//Delete Exercise
+const removeExercise = async (workoutId, exerciseId) => {
+    const foundWorkout = await Workout.findById(workoutId);
+    const foundExercise = foundWorkout.exercises.id(exerciseId);
+    foundWorkout.exercises.pull(foundExercise);
+    await foundWorkout.save();
+};
+
+// Delete exercise route
+app.delete("/workouts/:workoutId/exercises/:exerciseId", async (req, res) => {
+    const { workoutId, exerciseId } = req.params; //asked chat why exercise id was not passing
+    await removeExercise(workoutId, exerciseId);
+    res.redirect(`/workouts/${workoutId}`);
+});
+
+
+//Update Exercise 
+const updateExercise = async (workoutId, exerciseId) => {
+    const foundWorkout = await Workout.findById(workoutId);
+    const foundExercise = foundWorkout.exercises.id(exerciseId);
+    foundWorkout.exercises.push(foundExercise);
+    await foundWorkout.save();
+};
+
+//Update Exercise route
+app.put('/workouts/:workoutId/exercises/:exerciseId', async (req, res) => {
+    
+})
 
 // const runQueries = async () => {
 //     console.log('Running q');

@@ -23,13 +23,18 @@
                     Name: <%= exercise.name %><br>
                     Completed: <%= exercise.isCompleted ? "Yes" : "No" %><br>
                     Reps: <%= exercise.reps %>
+                    <form action="/workouts/<%= workout._id %>/exercises/<%= exercise._id %>?_method=DELETE" method="POST">
+                        <button type="submit">Delete Exercise</button>
+                      </form>
                 </li>
             <% }) %>
         </ul>
+        
     <% } else { %>
         <h1>No exercises yet. Add Exercise? <a class="start-day" href="/workouts/<%= workout._id %>/edit"><%= workout.name %>?</a></h1>
     <% } %>
-
+   
+      
     <!-- Add an Exercise  -->
     <form action="/workouts/<%= workout._id%>/exercise" method="POST">
       <label for="name">Exercise Name:</label>
