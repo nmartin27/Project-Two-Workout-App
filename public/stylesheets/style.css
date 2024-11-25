@@ -135,6 +135,7 @@ button {
 
 button:hover {
   background-color: #769642;
+  cursor: pointer;
 }
 
 button:active {

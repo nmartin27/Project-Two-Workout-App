@@ -8,22 +8,36 @@
     <title>Workout Page</title>
   </head>
   <body>
-    
     <% if (workout.isCompleted) { %>
-        <h1> Good job on Completing <%=workout.name%>!</h1>
+        <h1> Good job on Completing <%= workout.name %>!</h1>
         <h3> You completed in <%= workout.duration %> minutes!</h3>
     <% } else { %>
-        <h1>GET IT DONE! Start <a class="start-day" href="/workouts/<%= workout._id %>/edit"><%= workout.name%>?</a></h1>
+        <h1>GET IT DONE! Start <a class="start-day" href="/workouts/<%= workout._id %>/edit"><%= workout.name %>?</a></h1>
+    <% } %>
+  
+    <% if (workout.exercises && workout.exercises.length > 0) { %>
+        <h3> Exercises:</h3>
+        <ul>
+            <% workout.exercises.forEach((exercise) => { %>
+                <li>
+                    Name: <%= exercise.name %><br>
+                    Completed: <%= exercise.isCompleted ? "Yes" : "No" %><br>
+                    Reps: <%= exercise.reps %>
+                </li>
+            <% }) %>
+        </ul>
+    <% } else { %>
+        <h1>No exercises yet. Add Exercise? <a class="start-day" href="/workouts/<%= workout._id %>/edit"><%= workout.name %>?</a></h1>
     <% } %>
 
     <!-- Add an Exercise  -->
-    <form action="/workouts/:workoutId" method="POST">
+    <form action="/workouts/<%= workout._id%>/exercise" method="POST">
       <label for="name">Exercise Name:</label>
       <input type="text" name="name" />
       <label for="name">Sets x Reps:</label>
       <input type="text" name="reps" placeholder="4 x 15" />
-      <!-- <label for="isCompleted">Did you complete your Exercise?</label>
-        <input type="checkbox" name="isCompleted"/> -->
+      <label for="isCompleted">Did you complete your Exercise?</label>
+        <input type="checkbox" name="isCompleted"/>
       <button type="submit">Add Exercise</button>
     </form>
     <form action="/workouts/<%= workout._id %>?_method=DELETE" method="POST">
