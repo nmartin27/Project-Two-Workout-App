@@ -9,7 +9,7 @@ const app = express();
 mongoose.connect(process.env.MONGODB_URI);
 mongoose.connection.on("connected", async () => {
   console.log(`${mongoose.connection.name}`);
-//   await runQueries();
+  //   await runQueries();
 });
 
 const Workout = require("./models/workout.js");
@@ -22,7 +22,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.get("/", async (req, res) => {
   res.render("home.ejs");
 });
-//Read index page
+//Read index Workout page
 app.get("/workouts", async (req, res) => {
   const allWorkouts = await Workout.find();
   res.render("workouts/index.ejs", { workouts: allWorkouts });
@@ -33,7 +33,7 @@ app.get("/workouts/new", async (req, res) => {
   res.render("workouts/new.ejs");
 });
 
-//show page
+//show page Workout
 app.get("/workouts/:workoutId", async (req, res) => {
   const foundWorkout = await Workout.findById(req.params.workoutId);
   const exerciseId = req.params.exerciseId;
@@ -56,64 +56,68 @@ app.get("/workouts/:workoutId", async (req, res) => {
 //     })
 // }
 
-
-
-
-
 //create exercise
 const createExercise = async (workoutId, exerciseData) => {
-         const foundWorkout = await Workout.findById(workoutId);
-  
-        foundWorkout.exercises.push(exerciseData);
-      await foundWorkout.save();
-  
-    //   console.log('Modified workout:', foundWorkout);
-      return foundWorkout; 
-    };
+  const foundWorkout = await Workout.findById(workoutId);
 
-//Add to sub-document exercises
-app.post('/workouts/:workoutId/exercise', async (req, res) =>{
-const workoutId = req.params.workoutId;
-const exerciseData = {
+  foundWorkout.exercises.push(exerciseData);
+  await foundWorkout.save();
+
+  //   console.log('Modified workout:', foundWorkout);
+  return foundWorkout;
+};
+
+//Add to sub-document exercises route
+app.post("/workouts/:workoutId/exercise", async (req, res) => {
+  const workoutId = req.params.workoutId;
+  const exerciseData = {
     name: req.body.name,
-    isCompleted: req.body.isCompleted === 'on',
+    isCompleted: req.body.isCompleted === "on",
     reps: req.body.reps,
   };
 
-// console.log('workoutId from URL:', req.params.workoutId);
+  // console.log('workoutId from URL:', req.params.workoutId);
 
- const updatedWorkout = await createExercise(workoutId, exerciseData);
-res.redirect(`/workouts/${workoutId}`);
-    });
+  const updatedWorkout = await createExercise(workoutId, exerciseData);
+  res.redirect(`/workouts/${workoutId}`);
+});
 
 //Delete Exercise
 const removeExercise = async (workoutId, exerciseId) => {
-    const foundWorkout = await Workout.findById(workoutId);
-    const foundExercise = foundWorkout.exercises.id(exerciseId);
-    foundWorkout.exercises.pull(foundExercise);
-    await foundWorkout.save();
+  const foundWorkout = await Workout.findById(workoutId);
+  const foundExercise = foundWorkout.exercises.id(exerciseId);
+  foundWorkout.exercises.pull(foundExercise);
+  await foundWorkout.save();
 };
 
 // Delete exercise route
 app.delete("/workouts/:workoutId/exercises/:exerciseId", async (req, res) => {
-    const { workoutId, exerciseId } = req.params; //asked chat why exercise id was not passing
-    await removeExercise(workoutId, exerciseId);
-    res.redirect(`/workouts/${workoutId}`);
+  const { workoutId, exerciseId } = req.params; //asked chat why exercise id was not passing
+  await removeExercise(workoutId, exerciseId);
+  res.redirect(`/workouts/${workoutId}`);
 });
 
-
-//Update Exercise 
-const updateExercise = async (workoutId, exerciseId) => {
-    const foundWorkout = await Workout.findById(workoutId);
-    const foundExercise = foundWorkout.exercises.id(exerciseId);
-    foundWorkout.exercises.push(foundExercise);
-    await foundWorkout.save();
+//Update Exercise
+const updateExercise = async (workoutId, exerciseId, updatedData) => {
+  const foundWorkout = await Workout.findById(workoutId);
+  const foundExercise = foundWorkout.exercises.id(exerciseId);
+  foundExercise.name = updatedData.name || foundExercise.name;
+  foundExercise.isCompleted = updatedData.isCompleted;
+  foundExercise.reps = updatedData.reps || foundExercise.reps;
+  await foundWorkout.save();
 };
 
 //Update Exercise route
-app.put('/workouts/:workoutId/exercises/:exerciseId', async (req, res) => {
-    
-})
+app.put("/workouts/:workoutId/exercises/:exerciseId", async (req, res) => {
+   const { workoutId, exerciseId } = req.params;
+   const updatedData = {
+    name: req.body.name,
+    isCompleted: req.body.isCompleted === "on",
+    reps: req.body.reps,
+  };
+  await updateExercise(workoutId, exerciseId, updatedData);
+  res.redirect(`/workouts/${req.params.workoutId}`);
+});
 
 // const runQueries = async () => {
 //     console.log('Running q');
@@ -131,13 +135,13 @@ app.post("/workouts", async (req, res) => {
   res.redirect("/workouts");
 });
 
-// Delete
+// Delete Workout
 app.delete("/workouts/:workoutId", async (req, res) => {
   await Workout.findByIdAndDelete(req.params.workoutId);
   res.redirect("/workouts");
 });
 
-//Edit
+//Edit Workout
 app.get("/workouts/:workoutId/edit", async (req, res) => {
   const foundWorkout = await Workout.findById(req.params.workoutId);
   res.render("workouts/edit.ejs", {
@@ -145,7 +149,7 @@ app.get("/workouts/:workoutId/edit", async (req, res) => {
   });
 });
 
-//Update
+//Update Workout
 app.put("/workouts/:workoutId", async (req, res) => {
   if (req.body.isCompleted === "on") {
     req.body.isCompleted = true;
