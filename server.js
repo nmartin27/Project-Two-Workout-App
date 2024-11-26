@@ -22,6 +22,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.get("/", async (req, res) => {
   res.render("home.ejs");
 });
+
 //Read index Workout page
 app.get("/workouts", async (req, res) => {
   const allWorkouts = await Workout.find();
@@ -109,8 +110,8 @@ const updateExercise = async (workoutId, exerciseId, updatedData) => {
 
 //Update Exercise route
 app.put("/workouts/:workoutId/exercises/:exerciseId", async (req, res) => {
-   const { workoutId, exerciseId } = req.params;
-   const updatedData = {
+  const { workoutId, exerciseId } = req.params;
+  const updatedData = {
     name: req.body.name,
     isCompleted: req.body.isCompleted === "on",
     reps: req.body.reps,
@@ -159,9 +160,6 @@ app.put("/workouts/:workoutId", async (req, res) => {
   await Workout.findByIdAndUpdate(req.params.workoutId, req.body);
   res.redirect(`/workouts/${req.params.workoutId}`);
 });
-
-
-
 
 app.listen(3003, () => {
   console.log("Port 3003, sir!");

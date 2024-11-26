@@ -27,12 +27,14 @@
       integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
       crossorigin="anonymous"
     ></script>
+    <!-- Workout list -->
     <ul>
         <% workouts.forEach(workout => { %>
           <li><a href="/workouts/<%=workout._id%>"><%= workout.name%></a> </li> 
        <% }); %>
     </ul>
 </body>
+ <!-- Nav bar -->
 <nav class="navbar bg-body-tertiary fixed-top">
     <div class="container-fluid">
 <a href="/"><div class="home">Home</div></a>

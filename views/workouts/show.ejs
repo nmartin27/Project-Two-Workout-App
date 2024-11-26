@@ -28,6 +28,7 @@
       integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
       crossorigin="anonymous"
     ></script>
+
     <% if (workout.isCompleted) { %>
     <h1>Good job on completing <%= workout.name %>!</h1>
     <h3>You completed in <%= workout.duration %> minutes!</h3>
@@ -39,6 +40,8 @@
       >
     </h1>
     <br />
+    
+    <!-- Exerise Cards -->
     <% } %> <% if (workout.exercises && workout.exercises.length > 0) { %>
     <h3>Exercises:</h3>
     <div class="row">
@@ -73,7 +76,7 @@
     <h1>No exercises yet. Add Exercise?</h1>
     <% } %>
 
-    <!-- Add an Exercise  -->
+    <!-- Add an Exercise Form -->
     <form
       class="form"
       action="/workouts/<%= workout._id%>/exercise"

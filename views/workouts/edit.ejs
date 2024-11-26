@@ -27,6 +27,8 @@
       integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
       crossorigin="anonymous"
     ></script>
+
+                    <!-- Update workout form -->
     <form class="form" action="/workouts/<%= workout._id%>?_method=PUT" method="POST">
         <label for="name">Name:</label>
         <input type="text" name="name" placeholder="<%= workout.name %>"/>
@@ -38,6 +40,7 @@
       </div>
         <button type="submit" class="buttons">Update Workout</button>
     </form>
+                     <!-- Exercise cards -->
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
   <% workout.exercises.forEach((exercise) => { %>
     <div class="col">
