@@ -25,7 +25,7 @@
       integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
       crossorigin="anonymous"
     ></script>
-    <form action="/workouts" method="POST">
+    <form class="form" action="/workouts" method="POST">
       <label for="name">Name:</label>
       <input type="text" name="name" />
       <label for="name">Day:</label>
@@ -36,9 +36,9 @@
         name="duration"
         placeholder="(e.g., minutes, seconds)"
       />
-      <div class="is-completed">
+      <div class="checkbox-div">
         <label for="isCompleted">Did you complete your workout?</label>
-        <input class="checkbox-div" type="checkbox" name="isCompleted" />
+        <input class="checkbox" type="checkbox" name="isCompleted" />
       </div>
       <button type="submit">Add Workout</button>
     </form>

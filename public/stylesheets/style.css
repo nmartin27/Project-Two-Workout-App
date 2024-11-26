@@ -30,7 +30,54 @@ ul {
   text-decoration-line: none;
 }
 
-.start-day {
+/* .exercise-list{/ */
+    /* display: flex; */
+  /* flex-direction: row; */
+  /* font-size: 1.8em; */
+  /* font-family: "Nothing You Could Do", cursive, sans-serif; */
+  /* text-decoration-line: none; */
+  /* background-color: none; */
+/* box-shadow: none; */
+/* } */
+
+
+.card-link {
+    background: none;
+    background-color: none;
+    border: none;
+    color: #007bff; 
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0;
+    display: flex; 
+    flex-direction: row;
+    font-size: 1em;
+    font-family: "DM Sans", sans-serif;
+  }
+
+.card-link:hover{
+    cursor: pointer;
+    background-color: none;
+    background: none;
+}
+
+.delete-btn{
+    /* display: flex; */
+    /* flex-direction: row; */
+    box-shadow: none;
+    background-color: none;
+}
+
+.delete-btn:hover {
+    background-color: none;
+    cursor: pointer;
+  }
+
+/* .btn-outline-danger{ */
+    /* border-radius: 50%; */
+/* } */
+
+.start-workout {
   display: inline;
   /* align-self: baseline; */
   /* align-items: first baseline; */
@@ -91,7 +138,7 @@ footer {
     box-shadow: 0 2.5px #ffbd59
 } */
 
-form {
+.form {
   font-family: "DM Sans", sans-serif;
   display: flex;
   flex-direction: column;
@@ -104,11 +151,11 @@ form {
   margin: 20px 10px;
 }
 
-.is-completed {
+.checkbox-div {
   padding: 10px;
 }
 
-.checkbox-div {
+.checkbox {
   flex-direction: row;
   /* align-self: center; */
   transform: scale(2.3);
@@ -123,6 +170,8 @@ input {
   padding: 5px;
 }
 
+
+
 button {
   align-self: center;
   margin: 10px 4px 4px 4px;
@@ -131,7 +180,7 @@ button {
   padding: 5px 10px;
   border-radius: 15px;
   border: none;
-  width: 15em;
+  width: fit-content;
 }
 
 button:hover {
@@ -139,6 +188,6 @@ button:hover {
   cursor: pointer;
 }
 
-button:active {
-  background-color: #2d4d3a;
-}
+/* button:active { */
+  /* background-color: #2d4d3a; */
+/* } */
