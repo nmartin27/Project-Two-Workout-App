@@ -116,15 +116,30 @@ footer {
   /* position: sticky; */
 }
 
-.index-link {
-  text-decoration: none;
-  /* align-self: flex-end; */
+.home-text{
+    color:black;
+    background-color: #ffbd59;
+    border: 2px solid black;
+    box-shadow: 0 5px#f47b5b ;
+    padding: 20px 30px;
+    border-radius: 20px;
+    margin: 20px 10px;
+        text-decoration: none;
+        font-size: 1em;
+        align-self: center;
 }
+
+.index-link, .index-text {
+  text-decoration: none;
+  font-size: 1.8em;
+  align-self: center;
+}
+
 
 .offcanvas-body{
 /* display: flex; */
 /* justify-content: center; */
-align-self: center;
+align-items: center;
 
 }
 
@@ -137,7 +152,7 @@ align-self: center;
     text-align: center;
     box-shadow: 0 5px#f47b5b ;
     display: flex;
-    align-items: center;
+    justify-self: center;
     padding: 20px 30px;
     border-radius: 20px;
     margin: 20px 10px;
