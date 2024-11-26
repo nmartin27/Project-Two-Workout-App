@@ -34,7 +34,7 @@
         <label for="isCompleted">Did you complete your workout?</label>
         <input class="checkbox" type="checkbox" name="isCompleted" <% if (workout.isCompleted) { %> checked <% } %>/>
       </div>
-        <button type="submit">Update Workout</button>
+        <button type="submit" class="buttons">Update Workout</button>
     </form>
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
   <% workout.exercises.forEach((exercise) => { %>

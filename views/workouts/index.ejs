@@ -13,8 +13,10 @@
 
     <title>Workout Index</title>
 </head>
-<body>
-    <h1>All your Workouts!</h1>
+ <h1>All your Workouts!</h1>
+ <body>
+    <!--  include('./partials/nav') %> -->
+
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
       integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
@@ -31,6 +33,22 @@
        <% }); %>
     </ul>
 </body>
-<a href="/workouts/new"><div class="new-workout">Add New Workout</div></a>
+<nav class="navbar bg-body-tertiary fixed-top">
+    <div class="container-fluid">
 <a href="/"><div class="home">Home</div></a>
+<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Workout Status</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item">
+<a href="/workouts/new"><div class="new-workout">Add New Workout</div></a>
+</li>
+</div>
+</nav>
 </html>

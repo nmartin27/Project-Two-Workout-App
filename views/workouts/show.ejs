@@ -15,6 +15,8 @@
     <title><%= workout.name %></title>
   </head>
   <body>
+    <%- include('./partials/nav') %>
+
     <!-- CDN Bootstrap Javascript -->
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
@@ -27,7 +29,7 @@
       crossorigin="anonymous"
     ></script>
     <% if (workout.isCompleted) { %>
-    <h1>Good job on Completing <%= workout.name %>!</h1>
+    <h1>Good job on completing <%= workout.name %>!</h1>
     <h3>You completed in <%= workout.duration %> minutes!</h3>
     <% } else { %>
     <h1>
@@ -85,20 +87,8 @@
         <label for="isCompleted">Did you complete your workout?</label>
         <input class="checkbox" type="checkbox" name="isCompleted" />
       </div>
-      <button type="submit">Add Exercise</button>
+      <button type="submit" class="buttons">Add Exercise</button>
     </form>
-    <form
-      class="delete-btn"
-      action="/workouts/<%= workout._id %>?_method=DELETE"
-      method="POST"
-    >
-      <button type="submit">Delete <%= workout.name%>?</button>
-    </form>
+
   </body>
-  <a class="index-link" href="/workouts">
-    <div class="index-text">Back to Workouts</div></a
-  >
-  <a href="/workouts/<%= workout._id %>/edit">
-    <div class="edit">Edit <%= workout.name %>?</div></a
-  >
 </html>
