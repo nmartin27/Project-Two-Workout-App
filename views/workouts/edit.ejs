@@ -56,6 +56,10 @@
               <input type="text" name="reps" class="form-control" placeholder="<%= exercise.reps %>"/>
             </div>
             <div class="mb-3">
+            <label for="name">Weight:</label>
+      <input type="number" name="weights" placeholder="" />
+            </div>
+            <div class="mb-3">
               <label for="isCompleted" class="form-label">Did you complete your workout?</label>
               <input class="form-check-input ms-2" type="checkbox" name="isCompleted" <% if (exercise.isCompleted) { %> checked <% } %> />
             </div>

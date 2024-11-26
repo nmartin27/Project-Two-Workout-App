@@ -115,6 +115,9 @@ footer {
   /* align-self: flex-start; */
   /* position: sticky; */
 }
+.row{
+    justify-content: space-between;
+}
 
 .home-text{
     color:black;

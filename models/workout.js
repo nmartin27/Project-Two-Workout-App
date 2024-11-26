@@ -4,6 +4,7 @@ const excerciseSchema = new mongoose.Schema ({
     name: String,
     isCompleted: Boolean,
     reps: String,
+    weights: { type: Number, default: 0, min: 0 },
 });
 
 const workoutSchema = new mongoose.Schema({

@@ -75,6 +75,7 @@ app.post("/workouts/:workoutId/exercise", async (req, res) => {
     name: req.body.name,
     isCompleted: req.body.isCompleted === "on",
     reps: req.body.reps,
+    weight: req.body.weight,
   };
 
   // console.log('workoutId from URL:', req.params.workoutId);
@@ -105,6 +106,7 @@ const updateExercise = async (workoutId, exerciseId, updatedData) => {
   foundExercise.name = updatedData.name || foundExercise.name;
   foundExercise.isCompleted = updatedData.isCompleted;
   foundExercise.reps = updatedData.reps || foundExercise.reps;
+  foundExercise.weight = updatedData.weight || foundExercise.weight;
   await foundWorkout.save();
 };
 
@@ -115,6 +117,7 @@ app.put("/workouts/:workoutId/exercises/:exerciseId", async (req, res) => {
     name: req.body.name,
     isCompleted: req.body.isCompleted === "on",
     reps: req.body.reps,
+    weight: req.body.weight,
   };
   await updateExercise(workoutId, exerciseId, updatedData);
   res.redirect(`/workouts/${req.params.workoutId}`);

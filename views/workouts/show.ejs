@@ -40,7 +40,7 @@
       >
     </h1>
     <br />
-    
+
     <!-- Exerise Cards -->
     <% } %> <% if (workout.exercises && workout.exercises.length > 0) { %>
     <h3>Exercises:</h3>
@@ -52,6 +52,7 @@
             <h5 class="card-title"><%= exercise.name %></h5>
             <h6>Completed: <%= exercise.isCompleted ? "Yes" : "No" %></h6>
             <p class="card-text"><%= exercise.reps %></p>
+            <p class="card-text"><%= exercise.weights %> lbs!</p>
             <a href="/workouts/<%= workout._id %>/edit" class="card-link"
               >Update <%= exercise.name %></a
             >
@@ -86,11 +87,14 @@
       <input type="text" name="name" />
       <label for="name">Sets x Reps:</label>
       <input type="text" name="reps" placeholder="4 x 15" />
+      <label for="name">Weight:</label>
+      <input type="number" name="weights" placeholder="" />
       <div class="checkbox-div">
         <label for="isCompleted">Did you complete your workout?</label>
         <input class="checkbox" type="checkbox" name="isCompleted" />
       </div>
       <button type="submit" class="buttons">Add Exercise</button>
+      
     </form>
 
   </body>
